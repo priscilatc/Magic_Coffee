@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Coffee - Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="icon" href="source/logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="source/logo.png" style="width: 75px; height: 75px;">
+            <a href="home.html">Magic Coffee</a>
+        </div>
+    </header>
+    
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-slide" data-section="menu">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/605bc823-88a3-4678-95d9-ea7755cec469.png" alt="Variedad de café fresco y pasteles en vitrina de cafetería con iluminación cálida" />
+                <div class="slide-content">
+                    <h2>Nuestro Menú</h2>
+                    <p>Descubre nuestra selección de cafés artesanales y deliciosos postres caseros</p>
+                    <button class="slide-btn">Ver Menú</button>
+                </div>
+            </div>
+            
+            <div class="carousel-slide" data-section="nosotros">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8bba46c0-223d-4dff-9a4a-cf9560d9f12d.png" alt="Barista preparando café en cafetería moderna con detalles de madera y plantas" />
+                <div class="slide-content">
+                    <h2>Nuestra Historia</h2>
+                    <p>Conoce la pasión y dedicación que hay detrás de cada taza de café</p>
+                    <button class="slide-btn">Sobre Nosotros</button>
+                </div>
+            </div>
+            
+            <div class="carousel-slide" data-section="ubicacion">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8469c1ef-f080-46cd-a2a0-689bee0f80b9.png" alt="Interior acogedor de cafetería con mesas de madera y clientes disfrutando su café" />
+                <div class="slide-content">
+                    <h2>Visítanos</h2>
+                    <p>Encuéntranos en el corazón de la ciudad. ¡Te esperamos!</p>
+                    <button class="slide-btn">Cómo Llegar</button>
+                </div>
+            </div>
+            
+            <div class="carousel-slide" data-section="eventos">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6e4ac7ba-94c8-4d4f-b10c-12043c6b2f00.png" alt="Grupo de personas en taller de café en cafetería con ambiente moderno" />
+                <div class="slide-content">
+                    <h2>Eventos Especiales</h2>
+                    <p>Talleres de barista, noches de música y más experiencias únicas</p>
+                    <button class="slide-btn">Próximos Eventos</button>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>© 2026 Cafetería Dulce Aroma. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+            }
+            
+            function navigateTo(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+            
+
+            // Add click event to slide buttons
+           document.querySelectorAll('.slide-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+            const section = this.closest('.carousel-slide').dataset.section;
+
+            // Redirección
+            window.location.href = `${section}.html`;
+            });
+            
+            // Pause on hover
+            carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            carousel.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 5000));
+        });
+            // Auto slide every 5 seconds
+            let slideInterval = setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+</html>
