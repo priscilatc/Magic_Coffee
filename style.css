@@ -1,15 +1,15 @@
 
 :root {
-    --primary: #9b3399;
-    --secondary: #bb52b7;
-    --accent: #9b3399;
-    --light: #fa91f4;
-    --dark: #7b147b;
-    --bg:#faf8f5;
-    --card:#ffffff;
-    --muted:#7b147b;
-    --radius:12px;
-    --shadow: 0 6px 18px rgba(30,30,30,0.08);
+    --primary: #663364;     /* color1 */
+    --secondary: #8a5587;   /* color2 */
+    --accent: #ae77aa;      /* color3 */
+    --light: #f6baf1;       /* color5 */
+    --dark: #663364;        /* color1 para textos fuertes */
+    --bg: #f6baf1;          /* fondo general suave */
+    --card: #ffffff;
+    --muted: #8a5587;       /* color2 para textos secundarios */
+    --radius: 12px;
+    --shadow: 0 6px 18px rgba(102, 51, 100, 0.15);
 }
 
 
@@ -289,7 +289,7 @@ main{
 }
 .price{
     background:linear-gradient(90deg,var(--light),var(--accent));
-    color: var(--bg);
+    color: #ffffff;
     font-weight:700;
     padding:6px 10px;
     border-radius:999px;
@@ -349,3 +349,55 @@ main{
     }
 }
 
+/* ===== MODO CELULAR: Carrusel se convierte en Cards ===== */
+@media (max-width: 768px) {
+
+    .carousel-container {
+        height: auto;
+        overflow: visible;
+        box-shadow: none;
+    }
+
+    .carousel {
+        display: flex;
+        flex-direction: column;
+        transform: none !important;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        width: 100%;
+        height: 300px;
+    }
+
+    .carousel-slide:hover {
+        min-width: 100%;
+    }
+
+    .carousel:hover .carousel-slide:not(:hover) {
+        min-width: 100%;
+    }
+
+    .carousel-slide img {
+        height: 100%;
+        border-radius: 12px;
+    }
+
+    /* Mostrar contenido siempre visible en móvil */
+    .slide-content {
+        opacity: 1;
+        position: absolute;
+    }
+
+    /* Ocultar botones */
+    .carousel-btn {
+        display: none;
+    }
+
+    /* Ocultar indicadores */
+    .carousel-indicators {
+        display: none;
+    }
+}
